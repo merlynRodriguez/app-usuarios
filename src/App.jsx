@@ -149,15 +149,17 @@ function App() {
           alt="Water Background"
           className="w-full h-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-white/90 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-white/60 to-white/80 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Header */}
-      <header className="relative z-10 pt-12 pb-6 px-6 text-center">
-        <h1 className="text-3xl font-bold text-brand-500 drop-shadow-sm mb-2">
-          Junta Vecinal <br /> Bolívar
+      <header className="relative z-10 pt-12 pb-6 px-6 text-center flex flex-col items-center">
+        <h1 className="text-4xl font-extrabold text-gray-900 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-1 tracking-tight">
+          Sistema de Agua Bolívar
         </h1>
-        <p className="text-gray-600 text-sm font-medium">Sistema de Agua Potable</p>
+        <p className="text-lg font-bold text-gray-800 drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]">
+          Junta Vecinal Bolívar
+        </p>
       </header>
 
       {/* Search Section */}
@@ -184,6 +186,60 @@ function App() {
 
       {/* Main Content */}
       <main className="relative z-10 px-4 max-w-md mx-auto space-y-6">
+        
+        {/* Novedades / Floating Cards Section */}
+        {!client && !loading && (
+          <div className="space-y-4 animate-fade-in">
+            {/* Tarjeta 1 */}
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-white/50">
+              <div className="flex items-start space-x-3">
+                <div className="bg-blue-100 p-2 rounded-xl mt-0.5 shadow-sm">
+                  <AlertCircle size={22} className="text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-1">Reunión ordinaria trimestral</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    La reunion ordinaria trimestral de la junta vecinal Bolivar se llevara a cabo el ultimo fin de semana de abril...<br />
+                    <strong className="text-gray-900 mt-2 block">Fecha: 26 de abril 2026 hr: 8:00</strong>
+                    <span className="block mt-0.5">Lugar: Cancha Bolivar</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tarjeta 2 */}
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-white/50">
+              <div className="flex items-start space-x-3">
+                <div className="bg-orange-100 p-2 rounded-xl mt-0.5 shadow-sm">
+                  <AlertCircle size={22} className="text-orange-600" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-1">Desfile de 6 de agosto</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    En el desfile de teas del 6 de agosto deben asistir los vecinos de lista del 100 a 200,<br />
+                    <span className="block mt-2 font-medium">Fecha: 5 de agosto de 2026 hr: 19:00</span>
+                    <span className="block mt-0.5">Lugar: Mercado central de vinto</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tarjeta 3 */}
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-white/50">
+              <div className="flex items-start space-x-3">
+                <div className="bg-green-100 p-2 rounded-xl mt-0.5 shadow-sm">
+                  <AlertCircle size={22} className="text-green-600" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-1">Cuidado del Agua</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Recuerda revisar tus grifos y tuberías regularmente. Prevenir fugas en casa ayuda a conservar el agua y mantener una buena presión para todos los vecinos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {loading && (
           <div className="text-center py-10">
@@ -288,18 +344,7 @@ function App() {
         )}
       </main>
 
-      {/* News Section */}
-      <footer className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-xl border-t border-gray-200 py-3 px-4 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
-        <div className="max-w-md mx-auto flex items-center space-x-3">
-          <div className="bg-brand-100 p-2 rounded-lg">
-            <AlertCircle size={20} className="text-brand-600" />
-          </div>
-          <div>
-            <p className="text-xs font-bold text-brand-800 uppercase tracking-wide">Novedades</p>
-            <p className="text-sm font-medium text-gray-700">Asistir al desfile del 6 de agosto</p>
-          </div>
-        </div>
-      </footer>
+
 
       {/* Payment Modal */}
       <PaymentModal
